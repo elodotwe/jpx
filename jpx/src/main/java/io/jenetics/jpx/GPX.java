@@ -57,6 +57,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 
+import com.ctc.wstx.stax.WstxInputFactory;
 import io.jenetics.jpx.GPX.Reader.Mode;
 
 /**
@@ -1058,7 +1059,7 @@ public final class GPX implements Serializable {
 		public GPX read(final InputStream input)
 			throws IOException
 		{
-			final XMLInputFactory factory = XMLInputFactory.newInstance();
+			final XMLInputFactory factory = new WstxInputFactory();
 			try  (CloseableXMLStreamReader reader = new CloseableXMLStreamReader(
 						factory.createXMLStreamReader(input)))
 			{
